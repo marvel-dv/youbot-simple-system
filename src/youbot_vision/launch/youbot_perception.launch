@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Detector de AprilTags -->
+  <include file="$(find youbot_vision)/launch/proto-apriltag.launch"/>
+
+  <!-- Publicador da pose alvo -->
+  <node pkg="youbot_vision"
+        type="tag_poseV2.py"
+        name="tag_pose_selector"
+        output="screen"/>
+
+</launch>
+

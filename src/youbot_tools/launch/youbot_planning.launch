@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- ================= MOVEIT ================= -->
+  <include file="$(find youbot_moveit)/launch/move_group.launch"/>
+
+  <!-- ============ SERVIÇO IK DO BRAÇO =========== -->
+  <node pkg="youbot_tools"
+        type="go_to_pose_moveit_server.py"
+        name="go_to_pose_server"
+        output="screen"/>
+
+  <!-- ============ CONTROLE DE APROXIMAÇÃO DA BASE =========== -->
+  <node pkg="youbot_tools"
+        type="approach_controller.py"
+        name="approach_controller"
+        output="screen"/>
+
+  <!-- ================= GRIPPER ================= -->
+  <node pkg="youbot_tools"
+        type="gripper_node.py"
+        name="gripper_node"
+        output="screen"/>
+
+</launch>
+

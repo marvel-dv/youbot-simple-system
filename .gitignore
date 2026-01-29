@@ -1,0 +1,17 @@
+# Catkin workspace
+build/
+devel/
+logs/
+
+# External repositories (cloned separately)
+src/brics_actuator/
+src/gazebo_ros_link_attacher/
+src/youbot-manipulation/
+src/youbot_description/
+src/youbot_driver/
+src/youbot_driver_ros_interface/
+src/youbot_simulation/
+
+# Python cache
+__pycache__/
+*.pyc

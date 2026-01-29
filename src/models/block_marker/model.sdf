@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="block_marker">
+    <static>false</static>
+
+    <link name="block_link">
+      <pose>0 0 0 0 0 0</pose>
+
+      <collision name="block_collision">
+        <geometry>
+          <box>
+            <size>0.02 0.05 0.05</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="block_visual">
+        <geometry>
+          <box>
+            <size>0.02 0.05 0.05</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!--PLACA DA TAG NA FACE 5×5 -->
+      <visual name="tag_plate">
+        <!-- Posição: metade do bloco (0.01) + metade da placa (0.0005) -->
+        <pose>0.0105 0 0 0 0 0</pose>
+
+        <geometry>
+          <box>
+            <!-- placa fina colada -->
+            <size>0.001 0.05 0.05</size>
+          </box>
+        </geometry>
+
+        <material>
+          <lighting>false</lighting>
+            <script>
+              <uri>model://block_marker/materials/scripts</uri>
+              <uri>model://block_marker/materials/textures</uri>
+              <name>BlockMarker/Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      
+      <visual name="tag_plate_2">
+        <!-- tag em outra face -->
+        <pose>-0.0105 0 0 0 0 0</pose>
+
+        <geometry>
+          <box>
+            <!-- placa fina colada -->
+            <size>0.001 0.05 0.05</size>
+          </box>
+        </geometry>
+
+        <material>
+          <lighting>false</lighting>
+            <script>
+              <uri>model://block_marker/materials/scripts</uri>
+              <uri>model://block_marker/materials/textures</uri>
+              <name>BlockMarker/Diffuse</name>
+          </script>
+        </material>
+      </visual>
+
+    </link>
+
+  </model>
+</sdf>
+

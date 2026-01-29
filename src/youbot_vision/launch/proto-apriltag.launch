@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="apriltag_ros"
+        type="apriltag_ros_continuous_node"
+        name="apriltag"
+        output="screen">
+
+    <!-- Remaps da câmera -->
+    <remap from="image_rect" to="/front_camera/image_raw"/>
+    <remap from="camera_info" to="/front_camera/camera_info"/>
+
+    <!-- Configuração geral -->
+    <param name="tag_family" value="tag36h11"/>
+    <param name="publish_tf" value="true"/>
+
+    <!-- DEFINIÇÃO EXPLÍCITA DA TAG -->
+    <rosparam param="standalone_tags">
+      - id: 1
+        size: 0.05        # 5 cm
+        frame_id: tag_1
+      - id: 2
+        size: 0.05        # 5 cm
+        frame_id: tag_1
+    </rosparam>
+    <param name="camera_frame" value="front_camera_optical_frame"/>
+
+  </node>
+
+</launch>
+
+

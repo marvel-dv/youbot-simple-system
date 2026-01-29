@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Usa tempo do Gazebo -->
+  <param name="use_sim_time" value="true"/>
+
+  <!-- Adiciona modelos locais do workspace ao Gazebo -->
+  <env
+    name="GAZEBO_MODEL_PATH"
+    value="$(find youbot_tools)/../models:$(optenv GAZEBO_MODEL_PATH)"
+  />
+
+  <!-- Gazebo com world custom -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name"
+         value="$(find youbot_tools)/worlds/youbot_task.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+  </include>
+
+  <!-- Spawn do youBot (necessário para controllers) -->
+  <param name="robot_description"
+         command="$(find xacro)/xacro $(find youbot_description)/robots/youbot.urdf.xacro"/>
+  
+  <!-- Publicador de TF do URDF -->
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_youbot"
+        args="-urdf -param robot_description -model youbot"/>
+  <node pkg="robot_state_publisher" type="robot_state_publisher"
+    name="robot_state_publisher" output="screen" />
+
+  <!-- Controllers -->
+  <include file="$(find youbot_gazebo_control)/launch/joint_state_controller.launch"/>
+  <include file="$(find youbot_gazebo_control)/launch/base_controller.launch"/>
+  <include file="$(find youbot_gazebo_control)/launch/arm_controller.launch"/>
+  <include file="$(find youbot_gazebo_control)/launch/gripper_controller.launch"/>
+
+</launch>
+

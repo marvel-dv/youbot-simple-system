@@ -1,0 +1,16 @@
+material BlockMarker/Diffuse
+{
+    receive_shadows off
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture marker.png
+            }
+        }
+    }
+}
+
+

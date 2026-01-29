@@ -41,13 +41,17 @@ This repository is part of an undergraduate thesis focused on mobile manipulatio
 integration using ROS.
 
 ## Installation and Setup
-
+> **Note:** If you cloned this repository (`youbot-simple-system`), all required
+> third-party packages are already included inside the `src/` directory.
+> The following cloning steps are only necessary if you are setting up the
+> workspace manually from scratch.
 ### 1. Create a workspace
 
 mkdir -p ~/youbot_ws/src
 cd ~/youbot_ws
 catkin_make
 source devel/setup.bash
+
 
 ### 2. Clone required repositories
 
@@ -60,6 +64,8 @@ cd ~/youbot_ws/src
 - git clone https://github.com/mas-group/youbot-manipulation -b kinetic
 - git clone https://github.com/wnowak/brics_actuator.git -b master
 - git clone https://github.com/pal-robotics/gazebo_ros_link_attacher.git
+
+
 
 ### 3. Compatibility fix (xacro)
 
